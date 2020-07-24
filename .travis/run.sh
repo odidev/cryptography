@@ -31,7 +31,11 @@ if [ -n "${DOCKER}" ]; then
         -e TOXENV "${DOCKER}" \
         /bin/sh -c "tox -- --wycheproof-root='/wycheproof'"
 elif [ -n "${TOXENV}" ]; then
-    tox -- --wycheproof-root="$HOME/wycheproof"
+    if [ 'uname -m' = "aarch64" ]; then
+        tox -- --wycheproof-root="$HOME/wycheproof" -n 8
+    else
+        tox -- --wycheproof-root="$HOME/wycheproof"
+    fi    
 else
     downstream_script="${TRAVIS_BUILD_DIR}/.travis/downstream.d/${DOWNSTREAM}.sh"
     if [ ! -x "$downstream_script" ]; then
