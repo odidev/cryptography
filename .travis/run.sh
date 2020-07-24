@@ -31,7 +31,7 @@ if [ -n "${DOCKER}" ]; then
         -e TOXENV "${DOCKER}" \
         /bin/sh -c "tox -- --wycheproof-root='/wycheproof'"
 elif [ -n "${TOXENV}" ]; then
-    if [ 'uname -m' = "aarch64" ]; then
+    if [ `uname -m` = "aarch64" ]; then
         tox -- --wycheproof-root="$HOME/wycheproof" -n 8
     else
         tox -- --wycheproof-root="$HOME/wycheproof"
