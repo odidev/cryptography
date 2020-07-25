@@ -1,50 +1,22 @@
-# Test file
-#kind: pipeline
-#name: test-on-arm64-py
-#platform:
-#  arch: arm64
-#steps:
-#- name: test
-#  image: python:3.8
-#  commands:
-#  - .travis/install.sh
-#  - ./.travis/run.sh
-#  environment:
-#    TOXENV: py38 
-#    LIBRESSL: 2.9.2
+local Pipeline(name, image) = {
+  kind: "pipeline",
+  name: name,
+  platform:
+    arch: "arm64"
+  steps: [
+    {
+      name: "test",
+      image: image,
+      commands: [
+        "pip install -r requirements.txt"
+      ]
+      environment: 
+        TOXENV: "py38"
+        LIBRESSL: "2.9.2"        
+    }
+  ]
+};
 
-#kind: pipeline
-#name: test-on-arm64
-#platform:
-#  arch: arm64
-#steps:
-#- name: test
-#  image: docker:dind
-#  volumes:
-#  - name: dockersock
-#    path: /var/run/docker.sock
-#  commands:
-#  - docker ps -a
-#  - .travis/install.sh
-#  - ./.travis/run.sh
-#  environment:
-#    TOXENV: py38
-#    DOCKER: 'pyca/cryptography-runner-bullseye'
-#volumes:
-#- name: dockersock
-#  host:
-#    path: /var/run/docker.sock
-
-kind: pipeline
-name: test-on-arm64-py
-platform:
-  arch: arm64
-steps:
-- name: test
-  image: pyca/cryptography-runner-bullseye
-  commands:
-  - .travis/install.sh
-  - ./.travis/run.sh
-  environment:
-    TOXENV: py38 
-    LIBRESSL: 2.9.2
+[
+  Pipeline("test", "python:3.8")
+]
