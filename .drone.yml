@@ -10,9 +10,12 @@ local Pipeline(name1, image1) = {
       commands: [
         "pip install -r requirements.txt"
       ]
-      environment: 
-        TOXENV: "py38"
-        LIBRESSL: "2.9.2"        
+      environment: [
+        {
+          TOXENV: "py38"
+          LIBRESSL: "2.9.2"
+        }
+      ]
     }
   ]
 };
