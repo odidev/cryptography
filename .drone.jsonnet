@@ -15,7 +15,7 @@ local Pipeline(name1, image1) = {
       ],
       environment: [
         {
-          TOXENV: "py38"
+          TOXENV: "py38",
           LIBRESSL: "2.9.2"
         }
       ]
