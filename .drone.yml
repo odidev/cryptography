@@ -20,9 +20,17 @@ platform:
 steps:
 - name: test
   image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
   commands:
+  - docker ps -a
   - .travis/install.sh
   - ./.travis/run.sh
   environment:
     TOXENV: py38
     DOCKER: 'pyca/cryptography-runner-bullseye'
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
