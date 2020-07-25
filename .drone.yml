@@ -18,5 +18,5 @@ local Pipeline(name, image) = {
 };
 
 [
-  Pipeline("test", "python:3.8")
+  Pipeline("test", "python:3.8"),
 ]
