@@ -1,12 +1,12 @@
-local Pipeline(name, image) = {
+local Pipeline(name1, image1) = {
   kind: "pipeline",
-  name: name,
+  name: name1,
   platform:
     arch: "arm64"
   steps: [
     {
       name: "test",
-      image: image,
+      image: image1,
       commands: [
         "pip install -r requirements.txt"
       ]
