@@ -5,7 +5,7 @@ local Pipeline(name, image) = {
     {
       DRONE_JSONNET_ENABLED: true
     }
-  ]
+  ],
   steps: [
     {
       name: "test",
