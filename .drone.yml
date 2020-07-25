@@ -14,7 +14,7 @@
 #    LIBRESSL: 2.9.2
 
 kind: pipeline
-name: test-on-arm64-docker
+name: test-on-arm64
 platform:
   arch: arm64
 steps:
