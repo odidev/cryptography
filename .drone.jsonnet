@@ -1,28 +1,17 @@
-local Pipeline(name1, image1) = {
+local Pipeline(image) = {
   kind: "pipeline",
-  name: name1,
-  platform: [
-    {
-      arch: "arm64"
-    }
-  ],
+  name: version,
   steps: [
     {
       name: "test",
-      image: image1,
+      image: image,
       commands: [
-        "pip install -r requirements.txt"
-      ],
-      environment: [
-        {
-          TOXENV: "py38",
-          LIBRESSL: "2.9.2"
-        }
+        "ls -l"
       ]
     }
   ]
 };
 
 [
-  Pipeline("test", "python:3.8")
+  Pipeline("python3.8")
 ]
