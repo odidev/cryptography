@@ -1,6 +1,11 @@
 local Pipeline(name, image) = {
   kind: "pipeline",
   name: name,
+  environment: [
+    {
+      DRONE_JSONNET_ENABLED: true
+    }
+  ]
   steps: [
     {
       name: "test",
