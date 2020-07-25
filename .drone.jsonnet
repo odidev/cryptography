@@ -1,6 +1,6 @@
 local Pipeline(image) = {
   kind: "pipeline",
-  name: version,
+  name: "test",
   steps: [
     {
       name: "test",
