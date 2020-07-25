@@ -1,6 +1,6 @@
 # Test file
 kind: pipeline
-name: test-on-arm64
+name: test-on-arm64-py
 platform:
   arch: arm64
 steps:
@@ -14,13 +14,12 @@ steps:
     LIBRESSL: 2.9.2
 
 kind: pipeline
-type: docker
-name: test-on-arm64
+name: test-on-arm64-docker
 platform:
   arch: arm64
 steps:
 - name: test
-  image: python:3.8
+  image: docker:dind
   commands:
   - .travis/install.sh
   - ./.travis/run.sh
