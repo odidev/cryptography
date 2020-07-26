@@ -16,7 +16,7 @@ recursive-include tests *.py
 exclude vectors
 recursive-exclude vectors *
 
-exclude .travis.yml .travis
+exclude .travis.yml .travis .drone.yml
 recursive-exclude .travis *
 recursive-exclude .github *
 
