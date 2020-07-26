@@ -1,5 +1,61 @@
 ---
 kind: pipeline
+name: AArch64-build-py3.6
+platform:
+  arch: arm64
+steps:
+- name: test
+  image: python:3.6
+  commands:
+  - .travis/install.sh
+  - ./.travis/run.sh
+  environment:
+    TOXENV: py36
+
+---
+kind: pipeline
+name: AArch64-build-py3.8-pep8
+platform:
+  arch: arm64
+steps:
+- name: test
+  image: python:3.8
+  commands:
+  - .travis/install.sh
+  - ./.travis/run.sh
+  environment:
+    TOXENV: pep8
+
+---
+kind: pipeline
+name: AArch64-build-py3.8--idna
+platform:
+  arch: arm64
+steps:
+- name: test
+  image: python:3.8
+  commands:
+  - .travis/install.sh
+  - ./.travis/run.sh
+  environment:
+    TOXENV: py38-idna
+
+---
+kind: pipeline
+name: AArch64-build-py3.8-packaging
+platform:
+  arch: arm64
+steps:
+- name: test
+  image: python:3.8
+  commands:
+  - .travis/install.sh
+  - ./.travis/run.sh
+  environment:
+    TOXENV: packaging
+
+---
+kind: pipeline
 name: AArch64-build-py3.8-ssl1.1.0l
 platform:
   arch: arm64
@@ -42,36 +98,6 @@ steps:
   environment:
     TOXENV: py38-ssh
     LIBRESSL: 1.1.1g
-
----
-kind: pipeline
-name: AArch64-build-py3.8-ssh-ssl1.1.1g
-platform:
-  arch: arm64
-steps:
-- name: test
-  image: python:3.8
-  commands:
-  - .travis/install.sh
-  - ./.travis/run.sh
-  environment:
-    TOXENV: py38-ssh
-    LIBRESSL: 1.1.1g
-
----
-kind: pipeline
-name: AArch64-build-py3.8-ssl2.9.2
-platform:
-  arch: arm64
-steps:
-- name: test
-  image: python:3.8
-  commands:
-  - .travis/install.sh
-  - ./.travis/run.sh
-  environment:
-    TOXENV: py38
-    LIBRESSL: 2.9.2
 
 ---
 kind: pipeline
