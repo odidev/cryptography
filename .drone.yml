@@ -67,7 +67,7 @@ steps:
   - ./.travis/run.sh
   environment:
     TOXENV: py38
-    LIBRESSL: 1.1.0l
+    OPENSSL: 1.1.0l
 
 ---
 kind: pipeline
@@ -82,7 +82,7 @@ steps:
   - ./.travis/run.sh
   environment:
     TOXENV: py38
-    LIBRESSL: 1.1.1g
+    OPENSSL: 1.1.1g
 
 ---
 kind: pipeline
@@ -97,7 +97,7 @@ steps:
   - ./.travis/run.sh
   environment:
     TOXENV: py38-ssh
-    LIBRESSL: 1.1.1g
+    OPENSSL: 1.1.1g
 
 ---
 kind: pipeline
@@ -171,8 +171,8 @@ steps:
   - .travis/install.sh
   - ./.travis/run.sh
   environment:
-    TOXENV: py37
-    LIBRESSL: 1.1.1g
+    DOWNSTREAM: twisted
+    OPENSSL: 1.1.1g
 
 ---
 kind: pipeline
