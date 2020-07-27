@@ -33,7 +33,15 @@ if [ -n "${DOCKER}" ]; then
 elif [ -n "${TOXENV}" ]; then
     tox -- --wycheproof-root="$HOME/wycheproof"
 else
-    downstream_script="${TRAVIS_BUILD_DIR}/.travis/downstream.d/${DOWNSTREAM}.sh"
+    pwd || true
+    ls || true
+    ls .. || true
+    
+    if [ `uname -m` = "aarch64" ]; then
+        downstream_script="./.travis/downstream.d/${DOWNSTREAM}.sh"    
+    else
+        downstream_script="${TRAVIS_BUILD_DIR}/.travis/downstream.d/${DOWNSTREAM}.sh"
+    fi
     if [ ! -x "$downstream_script" ]; then
         exit 1
     fi
