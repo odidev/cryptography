@@ -161,22 +161,6 @@ steps:
 
 ---
 kind: pipeline
-name: AArch64-build-py3.7-ssl1.1.1g
-platform:
-  arch: arm64
-steps:
-- name: test
-  image: python:3.7
-  commands:
-  - pwd
-  - .travis/install.sh
-  - ./.travis/run.sh
-  environment:
-    DOWNSTREAM: twisted
-    OPENSSL: 1.1.1g
-
----
-kind: pipeline
 name: AArch64-build-py3.8-ssl1.1.1g-config
 platform:
   arch: arm64
